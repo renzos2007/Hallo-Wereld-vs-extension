@@ -13,6 +13,19 @@ function checkWorkspace(){
 	return workspaceFolder;
 }
 
+function createHelloWorldPython(){
+	const workspace = checkWorkspace();
+		if (!workspace){
+			return;
+		}
+		const rootFolderPath = workspace[0].uri.fsPath;
+		const pythonFilePath = path.join(rootFolderPath, 'hello_world.py');
+
+		fs.writeFileSync(pythonFilePath, 'print("Hello world")\n');
+
+		vscode.window.showInformationMessage('file created');
+}
+
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
@@ -33,12 +46,9 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(disposable);
 
 	const python = vscode.commands.registerCommand('hallo-wereld.halloWereldPython', () => {
-		const workspace = checkWorkspace();
-		if (!workspace){
-			return;
-		}
+		
 
-		vscode.window.showInformationMessage('Hello World from Hallo-Wereld!');
+		createHelloWorldPython();
 		
 	});
 
