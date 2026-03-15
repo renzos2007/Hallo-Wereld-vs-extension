@@ -1,6 +1,16 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
+import * as fs from 'fs';
+import * as path from 'path';
+
+function checkWorkspace(){
+	const workspaceFolder = vscode.workspace.workspaceFolders;
+	if (!workspaceFolder) {
+		vscode.window.showErrorMessage('No workspace open');
+	}
+	return workspaceFolder;
+}
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
@@ -24,6 +34,9 @@ export function activate(context: vscode.ExtensionContext) {
 	const python = vscode.commands.registerCommand('hallo-wereld.halloWereldPython', () => {
 		// The code you place here will be executed every time your command is executed
 		// Display a message box to the user
+		
+		checkWorkspace();
+
 		vscode.window.showInformationMessage('Hello World from Hallo-Wereld!');
 		
 	});
