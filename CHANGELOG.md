@@ -10,9 +10,9 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 - V1.0 Intial commit
 - V1.1 Created a command new command
 - V1.2 Created a function that checks the workspace
-- V1.3 if workspace not found, stop the command
-- V1.4 create a python file with hello world in it
-
-
+- V1.3 If workspace not found, stop the command
+- V1.4 Create a python file with hello world in it
+- V1.5 changed the file structure
+- V1.6 Made a check for extensions
 
 - Initial release
