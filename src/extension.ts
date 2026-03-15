@@ -8,6 +8,7 @@ function checkWorkspace(){
 	const workspaceFolder = vscode.workspace.workspaceFolders;
 	if (!workspaceFolder) {
 		vscode.window.showErrorMessage('No workspace open');
+		return undefined;
 	}
 	return workspaceFolder;
 }
@@ -32,10 +33,10 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(disposable);
 
 	const python = vscode.commands.registerCommand('hallo-wereld.halloWereldPython', () => {
-		// The code you place here will be executed every time your command is executed
-		// Display a message box to the user
-		
-		checkWorkspace();
+		const workspace = checkWorkspace();
+		if (!workspace){
+			return;
+		}
 
 		vscode.window.showInformationMessage('Hello World from Hallo-Wereld!');
 		

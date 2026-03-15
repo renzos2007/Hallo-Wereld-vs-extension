@@ -10,6 +10,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 - V1.0 Intial commit
 - V1.1 Created a command new command
 - V1.2 Created a function that checks the workspace
+- V1.3 if workspace not found, stop the command
 
 
 
