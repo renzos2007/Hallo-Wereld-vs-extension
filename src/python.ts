@@ -2,6 +2,7 @@ import * as vscode from 'vscode';
 import * as fs from 'fs';
 import * as path from 'path';
 import {checkWorkspace} from './extension';
+import { exec } from "child_process";
 
 const extensions = ['ms-python.python', 'ms-python.debugpy', 'ms-python.vscode-python-envs', 'ms-python.vscode-pylance', 'esbenp.prettier-vscode', 'shaharkazaz.git-merger'];
 const needToInstallActivate = [];
@@ -45,9 +46,38 @@ export async function createHelloWorldPython(){
     }
 
     const rootFolderPath = workspace[0].uri.fsPath;
+    const venvPath = path.join(rootFolderPath, '.venv');
+    if (!fs.existsSync(venvPath)) {
+        await createVenv(rootFolderPath);
+        await selectInterpreter(rootFolderPath);
+    }
+
     const pythonFilePath = path.join(rootFolderPath, 'hello_world.py');
 
     fs.writeFileSync(pythonFilePath, 'print("Hello world")');
 
-    vscode.window.showInformationMessage('file created');
+    vscode.window.showInformationMessage('project set up');
+}
+
+async function createVenv(cwd: string) {
+    return new Promise((resolve, reject) => {
+        exec("python -m venv .venv", { cwd }, (error, stdout, stderr) => {
+            if (error) {
+                vscode.window.showErrorMessage(`Failed to create venv: ${stderr}`);
+                reject(error);
+                return;
+            }
+
+            vscode.window.showInformationMessage("Virtual environment (.venv) created.");
+            resolve(stdout);
+        });
+    });
+}
+
+async function selectInterpreter(rootFolderPath: string) {
+    await vscode.workspace.getConfiguration('python').update(
+    'defaultInterpreterPath',
+    `${rootFolderPath}/.venv/bin/python`,
+    vscode.ConfigurationTarget.Workspace
+    );
 }
