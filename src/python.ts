@@ -49,7 +49,6 @@ export async function createHelloWorldPython(){
     const venvPath = path.join(rootFolderPath, '.venv');
     if (!fs.existsSync(venvPath)) {
         await createVenv(rootFolderPath);
-        await selectInterpreter(rootFolderPath);
     }
 
     const pythonFilePath = path.join(rootFolderPath, 'hello_world.py');
@@ -61,23 +60,14 @@ export async function createHelloWorldPython(){
 
 async function createVenv(cwd: string) {
     return new Promise((resolve, reject) => {
-        exec("python -m venv .venv", { cwd }, (error, stdout, stderr) => {
+        exec("python -m venv .venv", { cwd }, async (error, stdout, stderr) => {
             if (error) {
                 vscode.window.showErrorMessage(`Failed to create venv: ${stderr}`);
                 reject(error);
                 return;
             }
-
             vscode.window.showInformationMessage("Virtual environment (.venv) created.");
             resolve(stdout);
         });
     });
-}
-
-async function selectInterpreter(rootFolderPath: string) {
-    await vscode.workspace.getConfiguration('python').update(
-    'defaultInterpreterPath',
-    `${rootFolderPath}/.venv/bin/python`,
-    vscode.ConfigurationTarget.Workspace
-    );
 }
