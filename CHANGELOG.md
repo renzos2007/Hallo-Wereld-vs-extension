@@ -18,5 +18,6 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 - V1.8 Made the logic that enables/installs the extensions
 - V1.9 {BUG} .venv is created, but the interpreter is not selected correctly
 - V1.10 bugfix .venv works correct now
+- V1.11 pythoncheck / made filestructure cleaner
 
 - Initial release

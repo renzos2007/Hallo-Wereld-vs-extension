@@ -8,6 +8,7 @@ const extensions = ['ms-python.python', 'ms-python.debugpy', 'ms-python.vscode-p
 const needToInstallActivate = [];
 
 export async function createHelloWorldPython(){
+    checkPython();
     const workspace = checkWorkspace();
     if (!workspace){
         return;
@@ -51,11 +52,12 @@ export async function createHelloWorldPython(){
         await createVenv(rootFolderPath);
     }
 
-    const pythonFilePath = path.join(rootFolderPath, 'hello_world.py');
+    const pythonFilePath = path.join(rootFolderPath, 'main.py');
+    const pythoncode = 'def main():\n   print("Hello world")\n\nif __name__=="__main__":\n  main()';
 
-    fs.writeFileSync(pythonFilePath, 'print("Hello world")');
+    fs.writeFileSync(pythonFilePath, pythoncode);
 
-    vscode.window.showInformationMessage('project set up');
+    vscode.window.showInformationMessage('project set up, you can start');
 }
 
 async function createVenv(cwd: string) {
@@ -66,7 +68,19 @@ async function createVenv(cwd: string) {
                 reject(error);
                 return;
             }
-            vscode.window.showInformationMessage("Virtual environment (.venv) created.");
+            resolve(stdout);
+        });
+    });
+}
+
+async function checkPython(){
+    return new Promise((resolve, reject) => {
+        exec("python --version", async (error, stdout, stderr) => {
+            if (error) {
+                vscode.window.showErrorMessage(`Python is not installed correctly: ${stderr}`);
+                reject(error);
+                return;
+            }
             resolve(stdout);
         });
     });
