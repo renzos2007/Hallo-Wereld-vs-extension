@@ -20,5 +20,6 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 - V1.10 bugfix .venv works correct now
 - V1.11 pythoncheck / made filestructure cleaner
 - V1.12 pythoncheck now made available on mac and linux, code is also cleaner
+- V1.13 create .venv now also available on mac and linux, code is also cleaner
 
 - Initial release

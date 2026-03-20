@@ -3,15 +3,6 @@
 import * as vscode from 'vscode';
 import {createHelloWorldPython} from './pycommand';
 
-export function checkWorkspace(){
-	const workspaceFolder = vscode.workspace.workspaceFolders;
-	if (!workspaceFolder) {
-		vscode.window.showErrorMessage('No workspace open');
-		return undefined;
-	}
-	return workspaceFolder;
-}
-
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
