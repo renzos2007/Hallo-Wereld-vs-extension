@@ -2,22 +2,21 @@ import * as vscode from 'vscode';
 import * as fs from 'fs';
 import * as path from 'path';
 import {checkWorkspace, runCommand, checkExtensions, installExtensions} from './publicfunctions';
-import { exec } from "child_process";
 
 const extensions = ['ms-python.python', 'ms-python.debugpy', 'ms-python.vscode-python-envs', 'ms-python.vscode-pylance', 'esbenp.prettier-vscode', 'shaharkazaz.git-merger'];
 
 export async function createHelloWorldPython(){
-    const pythonInstalled = checkPython();
+    const pythonInstalled = await checkPython();
     if (!pythonInstalled){
         return;
     }
 
-    const workspace = checkWorkspace();
+    const workspace = await checkWorkspace();
     if (!workspace){
         return;
     }
 
-    const needToInstall = checkExtensions(extensions);
+    const needToInstall = await checkExtensions(extensions);
 
     if (needToInstall.length > 0) {
         installExtensions(needToInstall);
