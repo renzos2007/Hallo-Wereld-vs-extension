@@ -1,7 +1,7 @@
 import { exec } from "child_process";
 import * as vscode from 'vscode';
 
-export function runCommand(command: string) {
+export function runCommand(command: string, cwd?: string) {
     return new Promise((resolve, reject) => {
         exec(command, (error, stdout, stderr) => {
             if (error) {

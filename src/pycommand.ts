@@ -2,6 +2,7 @@ import * as vscode from 'vscode';
 import * as fs from 'fs';
 import * as path from 'path';
 import {checkWorkspace, runCommand, checkExtensions, installExtensions} from './publicfunctions';
+import { exec } from 'child_process';
 
 const extensions = ['ms-python.python', 'ms-python.debugpy', 'ms-python.vscode-python-envs', 'ms-python.vscode-pylance', 'esbenp.prettier-vscode', 'shaharkazaz.git-merger'];
 
@@ -37,29 +38,30 @@ export async function createHelloWorldPython(){
 }
 
 async function createVenv(cwd: string) {
-    const commandVersions = ["python", "python3", "py"];
+    return new Promise((resolve, reject) => {
+        exec("python -m venv .venv", { cwd }, (error, stdout, stderr) => {
+            exec("python -m venv .venv", { cwd }, async (error, stdout, stderr) => {
+                if (error) {
+                    vscode.window.showErrorMessage(`Failed to create venv: ${stderr}`);
+                    reject(error);
+                    return;
+                }
 
-    for (const version of commandVersions) {
-        try {
-            await runCommand(`${version} -m venv .venv`);
-            return true;
-        } catch (err) {
-        }
-    }
-    vscode.window.showErrorMessage('Python is not installed or installed correctly');
-    return false;
+                vscode.window.showInformationMessage("Virtual environment (.venv) created.");
+                resolve(stdout);
+            });
+        });
+    });
 }
 
 async function checkPython() {
-    const commandVersions = ["python", "python3", "py"];
-
-    for (const cmd of commandVersions) {
-        try {
-            await runCommand(`${cmd} --version`);
+    try {
+            await runCommand(`python --version`);
             return true;
         } catch (err) {
-        }
+            vscode.window.showErrorMessage(`${err}`);
     }
+
     vscode.window.showErrorMessage('Python is not installed or installed correctly');
     return false;
 }
