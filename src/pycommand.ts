@@ -6,8 +6,8 @@ import { exec } from 'child_process';
 
 const extensions = ['ms-python.python', 'ms-python.debugpy', 'ms-python.vscode-python-envs', 'ms-python.vscode-pylance', 'esbenp.prettier-vscode', 'shaharkazaz.git-merger'];
 
-export async function createHelloWorldPython(){
-    const pythonInstalled = await checkPython();
+export async function createHelloWorldPython(version: string){
+    const pythonInstalled = await checkPython(version);
     if (!pythonInstalled){
         return;
     }
@@ -26,7 +26,7 @@ export async function createHelloWorldPython(){
     const rootFolderPath = workspace[0].uri.fsPath;
     const venvPath = path.join(rootFolderPath, '.venv');
     if (!fs.existsSync(venvPath)) {
-        await createVenv(rootFolderPath);
+        await createVenv(version, rootFolderPath);
     }
 
     const pythonFilePath = path.join(rootFolderPath, 'main.py');
@@ -37,26 +37,24 @@ export async function createHelloWorldPython(){
     vscode.window.showInformationMessage('project set up, you can start');
 }
 
-async function createVenv(cwd: string) {
+async function createVenv(version: string, cwd: string) {
     return new Promise((resolve, reject) => {
-        exec("python -m venv .venv", { cwd }, (error, stdout, stderr) => {
-            exec("python -m venv .venv", { cwd }, async (error, stdout, stderr) => {
-                if (error) {
-                    vscode.window.showErrorMessage(`Failed to create venv: ${stderr}`);
-                    reject(error);
-                    return;
-                }
+        exec("python -m venv .venv", { cwd }, async (error, stdout, stderr) => {
+            if (error) {
+                vscode.window.showErrorMessage(`Failed to create venv: ${stderr}`);
+                reject(error);
+                return;
+            }
 
-                vscode.window.showInformationMessage("Virtual environment (.venv) created.");
-                resolve(stdout);
-            });
+            vscode.window.showInformationMessage("Virtual environment (.venv) created.");
+            resolve(stdout);
         });
     });
 }
 
-async function checkPython() {
+async function checkPython(version: string) {
     try {
-            await runCommand(`python --version`);
+            await runCommand(`${version} --version`);
             return true;
         } catch (err) {
             vscode.window.showErrorMessage(`${err}`);
