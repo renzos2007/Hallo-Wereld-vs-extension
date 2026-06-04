@@ -38,18 +38,24 @@ export async function createHelloWorldPython(version: string){
 }
 
 async function createVenv(version: string, cwd: string) {
-    return new Promise((resolve, reject) => {
-        exec("python -m venv .venv", { cwd }, async (error, stdout, stderr) => {
-            if (error) {
-                vscode.window.showErrorMessage(`Failed to create venv: ${stderr}`);
-                reject(error);
-                return;
-            }
+    const candidates = [version];
+    if (version !== 'python3') candidates.push('python3');
+    if (version !== 'python') candidates.push('python');
 
-            vscode.window.showInformationMessage("Virtual environment (.venv) created.");
-            resolve(stdout);
-        });
-    });
+    let lastError: any;
+    for (const candidate of candidates) {
+        try {
+            await runCommand(`${candidate} -m venv .venv`, cwd);
+            vscode.window.showInformationMessage(`Virtual environment (.venv) created with ${candidate}.`);
+            return;
+        } catch (error: any) {
+            lastError = error;
+            console.error(`Failed venv with ${candidate}:`, error);
+        }
+    }
+
+    vscode.window.showErrorMessage(`Failed to create venv with ${candidates.join(', ')}: ${lastError?.message || lastError}`);
+    throw lastError;
 }
 
 async function checkPython(version: string) {

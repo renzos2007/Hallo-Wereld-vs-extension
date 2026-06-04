@@ -3,9 +3,10 @@ import * as vscode from 'vscode';
 
 export function runCommand(command: string, cwd?: string) {
     return new Promise((resolve, reject) => {
-        exec(command, (error, stdout, stderr) => {
+        exec(command, { cwd }, (error, stdout, stderr) => {
             if (error) {
-                reject(error);
+                const message = `${error.message}${stderr ? `: ${stderr.trim()}` : ''}`;
+                reject(new Error(message));
                 return;
             }
             resolve(stdout || stderr);
