@@ -20,12 +20,8 @@
   "contributes": {
     "commands": [
       {
-        "command": "hallo-wereld.helloWorld",
-        "title": "Hello World"
-      },
-      {
-        "command": "hallo-wereld.halloWereldPython",
-        "title": "Hallo Wereld Python"
+        "command": "hallo-wereld.HelloWorldPython",
+        "title": "Hello World Python"
       }
     ]
   },

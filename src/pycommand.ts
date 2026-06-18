@@ -39,8 +39,8 @@ export async function createHelloWorldPython(version: string){
 
 async function createVenv(version: string, cwd: string) {
     const candidates = [version];
-    if (version !== 'python3') candidates.push('python3');
-    if (version !== 'python') candidates.push('python');
+    if (version !== 'python3') {candidates.push('python3');}
+    if (version !== 'python') {candidates.push('python');}
 
     let lastError: any;
     for (const candidate of candidates) {

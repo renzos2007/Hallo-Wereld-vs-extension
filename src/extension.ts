@@ -23,7 +23,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 	context.subscriptions.push(disposable);
 
-	const python = vscode.commands.registerCommand('hallo-wereld.halloWereldPython', async () => {
+	const python = vscode.commands.registerCommand('hallo-world.HelloWorldPython', async () => {
 		const device = await getOS();
 		switch (device) {
 			case 'Windows':

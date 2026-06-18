@@ -24,7 +24,7 @@ No other external dependencies are needed to use the extension.
 1. Clone this repository:
    ```bash
    git clone <repo-url>
-   cd hello-world
+   cd hallo-wereld
    ```
 2. Install dependencies:
    ```bash
