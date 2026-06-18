@@ -1,7 +1,8 @@
 {
   "name": "hallo-wereld",
   "displayName": "Hallo-Wereld",
-  "description": "",
+  "description": "setup for a programming language",
+  "publisher": "Hallo-Wereld",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.116.0"
@@ -9,6 +10,11 @@
   "categories": [
     "Other"
   ],
+  "repository": {
+    "url": "https://github.com/renzos2007/Hallo-Wereld-vs-extension.git",
+    "type": "github"
+  },
+  "icon": "logo.ico",
   "activationEvents": [],
   "main": "./out/extension.js",
   "contributes": {
@@ -40,5 +46,8 @@
     "eslint": "10.2.1",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.59.0"
+  },
+  "dependencies": {
+    "@vscode/vsce": "^3.9.2"
   }
 }
