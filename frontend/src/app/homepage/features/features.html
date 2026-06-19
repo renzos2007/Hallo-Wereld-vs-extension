@@ -1,14 +1,13 @@
-<section class="section-card s2">
-  <p class="section-label">Functionaliteiten</p>
-  <h2 class="section-title">Wat doet de extensie?</h2>
-  <p class="section-body">
-    Met één commando regelt de extensie alles wat je nodig hebt om direct te
-    beginnen met coderen.
-  </p>
+<section class="section-card">
+  <p class="section-label">{{ 'features.label' | translate }}</p>
+  <h2 class="section-title">{{ 'features.title' | translate }}</h2>
+  <p class="section-body">{{ 'features.body' | translate }}</p>
   <div class="feature-row">
-    <span class="feature-pill" *ngFor="let feature of features">
-      <i class="ti {{ feature.icon }}" aria-hidden="true"></i>
-      {{ feature.label }}
-    </span>
+    @for (feature of features; track feature.key) {
+      <span class="feature-pill">
+        <i class="ti {{ feature.icon }}" aria-hidden="true"></i>
+        {{ feature.key | translate }}
+      </span>
+    }
   </div>
 </section>

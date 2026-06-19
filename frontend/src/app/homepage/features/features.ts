@@ -1,18 +1,20 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-features',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslatePipe],
   templateUrl: './features.html',
   styleUrls: ['./features.scss'],
 })
 export class Features {
-  features = [
-    { icon: 'ti-plug', label: 'Installeert extensies' },
-    { icon: 'ti-folder-plus', label: 'Maakt als het nodig is een .venv aan' },
-    { icon: 'ti-file-code', label: 'Genereert main bestand' },
-    { icon: 'ti-device-desktop', label: 'Windows, macOS & Linux' },
-  ];
+
+    features = [
+        { icon: 'ti-plug',           key: 'features.pills.extensions' },
+        { icon: 'ti-folder-plus',    key: 'features.pills.venv' },
+        { icon: 'ti-file-code',      key: 'features.pills.mainFile' },
+        { icon: 'ti-device-desktop', key: 'features.pills.platforms' },
+    ];
 }

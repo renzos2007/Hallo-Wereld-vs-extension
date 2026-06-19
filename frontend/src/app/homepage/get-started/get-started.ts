@@ -1,29 +1,18 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-get-started',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslatePipe],
   templateUrl: './get-started.html',
   styleUrls: ['./get-started.scss'],
 })
 export class GetStarted {
-  steps = [
-    {
-      label: 'Installeer de extensie',
-      detail: 'code --install-extension hallo-wereld.vsix',
-      isCode: true,
-    },
-    {
-      label: 'Open het Command Palette',
-      detail: 'Druk op Ctrl+Shift+P en zoek op Hello World {programeertaal die waarin je wil werken}',
-      isCode: false,
-    },
-    {
-      label: 'Klaar om te coderen',
-      detail: 'De extensie richt je project automatisch in.',
-      isCode: false,
-    },
-  ];
+    steps = [
+        { labelKey: 'getStarted.steps.step1.label', detailKey: 'getStarted.steps.step1.detail', isCode: true },
+        { labelKey: 'getStarted.steps.step2.label', detailKey: 'getStarted.steps.step2.detail', isCode: false },
+        { labelKey: 'getStarted.steps.step3.label', detailKey: 'getStarted.steps.step3.detail', isCode: false },
+    ];
 }
