@@ -1,0 +1,16 @@
+<section class="section-card s3">
+  <p class="section-label">Aan de slag</p>
+  <h2 class="section-title">In drie stappen klaar</h2>
+  <p class="section-body">Installeer de extensie en start meteen met coderen.</p>
+
+  <div class="steps">
+    <div class="step" *ngFor="let step of steps; let i = index">
+      <div class="step-num">{{ i + 1 }}</div>
+      <div class="step-content">
+        <span class="step-label">{{ step.label }}</span>
+        <code *ngIf="step.isCode" class="step-code">{{ step.detail }}</code>
+        <span *ngIf="!step.isCode" class="step-detail">{{ step.detail }}</span>
+      </div>
+    </div>
+  </div>
+</section>

@@ -6,9 +6,10 @@ import { Homepage } from "./homepage/homepage";
 
 @Component({
   selector: 'app-root',
+  standalone: true,
   imports: [Header, Footer, Homepage],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrls: ['./app.scss']
 })
 export class App {
   constructor(private translate: TranslateService) {

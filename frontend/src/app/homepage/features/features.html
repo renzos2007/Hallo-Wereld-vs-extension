@@ -1,0 +1,14 @@
+<section class="section-card s2">
+  <p class="section-label">Functionaliteiten</p>
+  <h2 class="section-title">Wat doet de extensie?</h2>
+  <p class="section-body">
+    Met één commando regelt de extensie alles wat je nodig hebt om direct te
+    beginnen met coderen.
+  </p>
+  <div class="feature-row">
+    <span class="feature-pill" *ngFor="let feature of features">
+      <i class="ti {{ feature.icon }}" aria-hidden="true"></i>
+      {{ feature.label }}
+    </span>
+  </div>
+</section>
