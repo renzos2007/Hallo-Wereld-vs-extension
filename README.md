@@ -1,23 +1,34 @@
 # Hallo Wereld
 
-A simple "Hello World" extension for Visual Studio Code. This extension adds a command that shows a welcome message.
+A VS Code extension for setting up Python projects. This extension provides commands to display hello world messages and automatically set up a Python development environment with required extensions and virtual environment.
 
 ## Features
 
-- Adds the `Hello World: Say Hello` command to the Command Palette
-- Shows an information message (`Hello World!`) when the command is run
+- **Hello World**: Displays a simple "Hello World from vs-code" message
+- **Hello World Python**: Sets up a complete Python project with:
+  - Detects the operating system and finds the appropriate Python command
+  - Installs essential VS Code extensions for Python development:
+    - Python
+    - Debugpy
+    - Python Environment Manager
+    - Pylance
+    - Prettier
+    - Git Merger
+  - Creates a Python virtual environment (`.venv`)
+  - Generates a `main.py` file with a basic hello world function
 
 ## Requirements
 
-- **Visual Studio Code** version 1.85.0 or higher
-- **Node.js** version 18.x or higher
-- **npm** version 9.x or higher
-- (Optional, for packaging) `@vscode/vsce`:
-  ```bash
-  npm install -g @vscode/vsce
-  ```
+- **Visual Studio Code** version 1.116.0 or higher
+- **Node.js** version 18.x or higher (for development/packaging)
+- **Python** 3.7 or higher (for the Python setup command)
+  - Windows: `python` command
+  - macOS/Linux: `python3` command
 
-No other external dependencies are needed to use the extension.
+Optional for packaging:
+```bash
+npm install -g @vscode/vsce
+```
 
 ## Installation (development)
 
@@ -36,15 +47,44 @@ No other external dependencies are needed to use the extension.
    ```
 4. Press `F5` to launch the extension in a new Extension Development Host window.
 
+## Commands
+
+This extension provides the following commands (accessible via Command Palette with `Ctrl+Shift+P` on Windows/Linux or `Cmd+Shift+P` on macOS):
+
+1. **Hello World Python** (`hallo-world.HelloWorldPython`)
+   - Sets up a complete Python development environment
+   - Checks for Python installation and detects the OS
+   - Installs recommended VS Code extensions for Python development
+   - Creates a virtual environment (`.venv`)
+   - Generates a `main.py` file with a hello world function
+
 ## Usage
 
+### Setting up a Python Project
+
 1. Open the Command Palette (`Ctrl+Shift+P` on Windows/Linux, `Cmd+Shift+P` on macOS)
-2. Search for **Hello World: Say Hello**
-3. Press Enter — a welcome message will appear
+2. Search for **Hello World Python**
+3. Press Enter
+4. The extension will:
+   - Check if Python is installed on your system
+   - Check that a workspace is open
+   - Install essential Python development extensions (if not already installed)
+   - Create a virtual environment in the project root (`.venv`)
+   - Create a `main.py` file with a basic hello world function
+   - Display a confirmation message
+
+The generated `main.py` will contain:
+```python
+def main():
+   print("Hello world")
+
+if __name__=="__main__":
+  main()
+```
 
 ## Extension Settings
 
-This extension does not currently contribute any VS Code settings.
+This extension does not currently contribute any configurable VS Code settings.
 
 ## Known Issues
 
@@ -63,6 +103,13 @@ code --install-extension hello-world-0.0.1.vsix
 ```
 
 ## Release Notes
+
+### 0.0.2
+
+- Added Python project setup command
+- Integrated automatic extension installation for Python development
+- Added virtual environment creation
+- Added OS detection for Python compatibility
 
 ### 0.0.1
 
