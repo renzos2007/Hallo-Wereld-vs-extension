@@ -37,7 +37,7 @@
       },
       "step2": {
         "label": "Open het Command Palette",
-        "detail": "Druk op Ctrl+Shift+P en zoek op Hello World Python"
+        "detail": "Druk op Ctrl+Shift+P en zoek op Hello World {programmertaal naar keuze}."
       },
       "step3": {
         "label": "Klaar om te coderen",

@@ -37,7 +37,7 @@
       },
       "step2": {
         "label": "Open the Command Palette",
-        "detail": "Press Ctrl+Shift+P and search for Hello World Python"
+        "detail": "Press Ctrl+Shift+P and search for Hello World {Programming language of your choice}."
       },
       "step3": {
         "label": "Ready to code",
