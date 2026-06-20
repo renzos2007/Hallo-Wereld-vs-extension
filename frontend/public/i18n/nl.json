@@ -1,0 +1,48 @@
+{
+  "footer": {
+    "name": "Naam: Renzo Steller",
+    "connect": "Contact opnemen? Dat kan hier:",
+    "linkedin": "Klik hier voor mijn linkedIn.",
+    "github": "Klik hier voor mijn github."
+  },
+  "projectIntro": {
+    "label": "Over het project",
+    "title": "Snel een Programmeer-project opzetten in VS Code",
+    "body": "Hallo Wereld is een VS Code extensie die je in één klik een volledig Programmeer-project laat aanmaken — inclusief virtuele omgeving, aanbevolen extensies en een startbestand.",
+    "badges": {
+      "python": "Python",
+      "vscode": "VS Code",
+      "openSource": "Open Source"
+    }
+  },
+  "features": {
+    "label": "Functionaliteiten",
+    "title": "Wat doet de extensie?",
+    "body": "Met één commando regelt de extensie alles wat je nodig hebt om direct te beginnen met coderen.",
+    "pills": {
+      "extensions": "Installeert extensies",
+      "venv": "Maakt als het nodig is een .venv aan",
+      "mainFile": "Genereert main bestand",
+      "platforms": "Windows, macOS & Linux"
+    }
+  },
+  "getStarted": {
+    "label": "Aan de slag",
+    "title": "In drie stappen klaar",
+    "body": "Installeer de extensie en start meteen met coderen.",
+    "steps": {
+      "step1": {
+        "label": "Installeer de extensie",
+        "detail": "code --install-extension hallo-wereld.vsix"
+      },
+      "step2": {
+        "label": "Open het Command Palette",
+        "detail": "Druk op Ctrl+Shift+P en zoek op Hello World Python"
+      },
+      "step3": {
+        "label": "Klaar om te coderen",
+        "detail": "De extensie richt je project automatisch in."
+      }
+    }
+  }
+}

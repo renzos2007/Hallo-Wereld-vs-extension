@@ -1,0 +1,13 @@
+<section class="section-card">
+  <p class="section-label">{{ 'projectIntro.label' | translate }}</p>
+  <h2 class="section-title">{{ 'projectIntro.title' | translate }}</h2>
+  <p class="section-body">{{ 'projectIntro.body' | translate }}</p>
+  <div class="badge-row">
+    @for (badge of badges; track badge.key) {
+      <span class="badge">
+        <i class="ti {{ badge.icon }}" aria-hidden="true"></i>
+        {{ badge.key | translate }}
+      </span>
+    }
+  </div>
+</section>

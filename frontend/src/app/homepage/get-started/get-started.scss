@@ -1,0 +1,95 @@
+.section-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1.5rem;
+  background: #fff;
+  border: 0.5px solid rgba(0, 0, 0, 0.12);
+  border-radius: 12px;
+  border-left: 3px solid #007a3c;
+
+  @media (max-width: 768px) {
+    min-height: 95svh;
+    border-radius: 0;
+    border-left: none;
+    border-top: 3px solid #007a3c;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 0 0 0.5rem;
+  }
+
+  .section-title {
+    font-size: 17px;
+    font-weight: 500;
+    color: #111;
+    margin: 0 0 0.4rem;
+  }
+
+  .section-body {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 0.75rem;
+
+    .step {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+
+      .step-num {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background: #007a3c;
+        color: #fff;
+        font-size: 11px;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        margin-top: 2px;
+      }
+
+      .step-content {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+
+        .step-label {
+          font-size: 14px;
+          font-weight: 500;
+          color: #222;
+        }
+
+        .step-detail {
+          font-size: 13px;
+          color: #666;
+        }
+
+        .step-code {
+          font-size: 12px;
+          font-family: monospace;
+          background: #f0f0ee;
+          color: #333;
+          padding: 2px 6px;
+          border-radius: 4px;
+          display: inline-block;
+        }
+      }
+    }
+  }
+}

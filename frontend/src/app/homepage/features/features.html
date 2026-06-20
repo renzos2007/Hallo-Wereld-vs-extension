@@ -1,0 +1,13 @@
+<section class="section-card">
+  <p class="section-label">{{ 'features.label' | translate }}</p>
+  <h2 class="section-title">{{ 'features.title' | translate }}</h2>
+  <p class="section-body">{{ 'features.body' | translate }}</p>
+  <div class="feature-row">
+    @for (feature of features; track feature.key) {
+      <span class="feature-pill">
+        <i class="ti {{ feature.icon }}" aria-hidden="true"></i>
+        {{ feature.key | translate }}
+      </span>
+    }
+  </div>
+</section>

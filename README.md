@@ -1,71 +1,120 @@
-# hallo-wereld README
+# Hallo Wereld
 
-This is the README for your extension "hallo-wereld". After writing up a brief description, we recommend including the following sections.
+A VS Code extension for setting up Python projects. This extension provides commands to display hello world messages and automatically set up a Python development environment with required extensions and virtual environment.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
-
-For example if there is an image subfolder under your extension project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+- **Hello World**: Displays a simple "Hello World from vs-code" message
+- **Hello World Python**: Sets up a complete Python project with:
+  - Detects the operating system and finds the appropriate Python command
+  - Installs essential VS Code extensions for Python development:
+    - Python
+    - Debugpy
+    - Python Environment Manager
+    - Pylance
+    - Prettier
+    - Git Merger
+  - Creates a Python virtual environment (`.venv`)
+  - Generates a `main.py` file with a basic hello world function
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+- **Visual Studio Code** version 1.116.0 or higher
+- **Node.js** version 18.x or higher (for development/packaging)
+- **Python** 3.7 or higher (for the Python setup command)
+  - Windows: `python` command
+  - macOS/Linux: `python3` command
+
+Optional for packaging:
+```bash
+npm install -g @vscode/vsce
+```
+
+## Installation (development)
+
+1. Clone this repository:
+   ```bash
+   git clone <repo-url>
+   cd hallo-wereld
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Open the folder in VS Code:
+   ```bash
+   code .
+   ```
+4. Press `F5` to launch the extension in a new Extension Development Host window.
+
+## Commands
+
+This extension provides the following commands (accessible via Command Palette with `Ctrl+Shift+P` on Windows/Linux or `Cmd+Shift+P` on macOS):
+
+1. **Hello World Python** (`hallo-world.HelloWorldPython`)
+   - Sets up a complete Python development environment
+   - Checks for Python installation and detects the OS
+   - Installs recommended VS Code extensions for Python development
+   - Creates a virtual environment (`.venv`)
+   - Generates a `main.py` file with a hello world function
+
+## Usage
+
+### Setting up a Python Project
+
+1. Open the Command Palette (`Ctrl+Shift+P` on Windows/Linux, `Cmd+Shift+P` on macOS)
+2. Search for **Hello World Python**
+3. Press Enter
+4. The extension will:
+   - Check if Python is installed on your system
+   - Check that a workspace is open
+   - Install essential Python development extensions (if not already installed)
+   - Create a virtual environment in the project root (`.venv`)
+   - Create a `main.py` file with a basic hello world function
+   - Display a confirmation message
+
+The generated `main.py` will contain:
+```python
+def main():
+   print("Hello world")
+
+if __name__=="__main__":
+  main()
+```
 
 ## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+This extension does not currently contribute any configurable VS Code settings.
 
 ## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+No known issues.
+
+## Packaging as .vsix
+
+```bash
+npx vsce package
+```
+
+This generates a `.vsix` file that can be installed locally with:
+
+```bash
+code --install-extension hello-world-0.0.1.vsix
+```
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
+### 0.0.2
 
-### 1.0.0
+- Added Python project setup command
+- Integrated automatic extension installation for Python development
+- Added virtual environment creation
+- Added OS detection for Python compatibility
 
-Initial release of ...
+### 0.0.1
 
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
+Initial release of the Hello World extension.
 
 ---
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
 
 **Enjoy!**

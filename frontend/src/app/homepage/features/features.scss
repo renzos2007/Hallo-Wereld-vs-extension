@@ -1,0 +1,63 @@
+.section-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1.5rem;
+  background: #fff;
+  border: 0.5px solid rgba(0, 0, 0, 0.12);
+  border-radius: 12px;
+  border-left: 3px solid #007a3c;
+
+  @media (max-width: 768px) {
+    min-height: 100vh;
+    border-radius: 0;
+    border-left: none;
+    border-top: 3px solid #007a3c;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 0 0 0.5rem;
+  }
+
+  .section-title {
+    font-size: 17px;
+    font-weight: 500;
+    color: #111;
+    margin: 0 0 0.4rem;
+  }
+
+  .section-body {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .feature-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 0.75rem;
+
+    .feature-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #f5f5f3;
+      color: #555;
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 99px;
+      border: 0.5px solid rgba(0, 0, 0, 0.1);
+
+      i {
+        font-size: 13px;
+      }
+    }
+  }
+}

@@ -1,0 +1,60 @@
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px;
+    width: 100%;
+    box-sizing: border-box;
+    gap: 40px;
+    flex-wrap: wrap;
+
+    background: linear-gradient(to right, #008000, #00A86B);
+
+    section {
+        display: flex;
+        align-items: center;
+    }
+
+    .left-section {
+        gap: 12px;
+
+        p {
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+        }
+    }
+
+    .language {
+        gap: 12px;  
+
+        img {
+            height: 36px;
+            width: auto;
+            border: 1px solid black;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    }
+
+    @media (max-width: 600px) {
+        justify-content: space-between;
+        gap: 10px;
+        padding: 10px;
+
+        .navigation {
+            gap: 6px;
+
+            button {
+                padding: 6px 10px;
+                font-size: 14px;
+            }
+        }
+
+        .language {
+            img {
+                height: 28px;
+            }
+        }
+    }
+}

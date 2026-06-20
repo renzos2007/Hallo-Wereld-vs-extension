@@ -1,0 +1,21 @@
+<section class="section-card">
+  <p class="section-label">{{ 'getStarted.label' | translate }}</p>
+  <h2 class="section-title">{{ 'getStarted.title' | translate }}</h2>
+  <p class="section-body">{{ 'getStarted.body' | translate }}</p>
+
+  <div class="steps">
+    @for (step of steps; track step.labelKey; let i = $index) {
+      <div class="step">
+        <div class="step-num">{{ i + 1 }}</div>
+        <div class="step-content">
+          <span class="step-label">{{ step.labelKey | translate }}</span>
+          @if (step.isCode) {
+            <code class="step-code">{{ step.detailKey | translate }}</code>
+          } @else {
+            <span class="step-detail">{{ step.detailKey | translate }}</span>
+          }
+        </div>
+      </div>
+    }
+  </div>
+</section>

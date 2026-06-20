@@ -1,21 +1,27 @@
 {
   "name": "hallo-wereld",
   "displayName": "Hallo-Wereld",
-  "description": "",
-  "version": "0.0.1",
+  "description": "setup for a programming language",
+  "publisher": "Hallo-Wereld",
+  "version": "0.0.2",
   "engines": {
-    "vscode": "^1.110.0"
+    "vscode": "^1.116.0"
   },
   "categories": [
     "Other"
   ],
+  "repository": {
+    "url": "https://github.com/renzos2007/Hallo-Wereld-vs-extension.git",
+    "type": "github"
+  },
+  "icon": "logo.ico",
   "activationEvents": [],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "hallo-wereld.helloWorld",
-        "title": "Hello World"
+        "command": "hallo-wereld.HelloWorldPython",
+        "title": "Hello World Python"
       }
     ]
   },
@@ -28,13 +34,16 @@
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/vscode": "^1.110.0",
     "@types/mocha": "^10.0.10",
-    "@types/node": "22.x",
-    "typescript-eslint": "^8.56.1",
-    "eslint": "^9.39.3",
-    "typescript": "^5.9.3",
-    "@vscode/test-cli": "^0.0.12",
-    "@vscode/test-electron": "^2.5.2"
+    "@types/node": "^25.6.0",
+    "@types/vscode": "^1.110.0",
+    "@vscode/test-cli": "^0.0.11",
+    "@vscode/test-electron": "^2.5.2",
+    "eslint": "10.2.1",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.59.0"
+  },
+  "dependencies": {
+    "@vscode/vsce": "^3.9.2"
   }
 }
